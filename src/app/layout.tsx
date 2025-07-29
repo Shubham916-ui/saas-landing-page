@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from '@/organisms/Navbar';
+import { Footer } from '@/organisms'; // Import the Footer component
 
 export const metadata: Metadata = {
   title: 'SaaS Platform - Modern Solution',
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <Navbar />
         {children}
+        <Footer /> {/* Add the Footer component here */}
       </body>
     </html>
   );

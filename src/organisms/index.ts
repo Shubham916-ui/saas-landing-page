@@ -1,1 +1,2 @@
-export * from './HeroSection'; 
+export * from './HeroSection';
+export { default as Footer } from './Footer';

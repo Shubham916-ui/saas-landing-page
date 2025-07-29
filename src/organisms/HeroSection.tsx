@@ -1,40 +1,68 @@
 'use client';
-import { motion } from 'framer-motion';
+
+import React, { useEffect } from 'react';
 
 export default function HeroSection() {
+  useEffect(() => {
+    console.log('HeroSection mounted, using correct image path');
+  }, []);
+
   return (
-    <section className="flex flex-col items-center justify-center min-h-[60vh] text-center gap-6 py-12">
-      <motion.h1 
-        className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        Your SaaS Solution For Modern Teams
-      </motion.h1>
-      
-      <motion.p
-        className="text-xl max-w-2xl text-gray-600 dark:text-gray-300"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-      >
-        Streamline your workflow, boost productivity, and take your business to the next level with our powerful platform.
-      </motion.p>
-      
-      <motion.div
-        className="flex gap-4 mt-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.4 }}
-      >
-        <a href="#pricing" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition">
-          Get Started
-        </a>
-        <a href="#demo" className="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-          Watch Demo
-        </a>
-      </motion.div>
-    </section>
+    <div className="hero-container">
+      <section className="content-container">
+        <div className="flex flex-col items-center justify-center text-center px-4 py-12 pt-24 w-full">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white max-w-3xl mb-8 drop-shadow-xl" 
+              style={{textShadow: '0 2px 4px rgba(0,0,0,0.5)'}}>
+            Streamline your workflow, boost productivity, and take your business to the next level with our powerful platform.
+          </h1>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#pricing"
+              className="px-8 py-3 bg-white text-black font-semibold rounded-lg shadow hover:bg-gray-200 transition"
+            >
+              Get Started
+            </a>
+            <a
+              href="#demo"
+              className="px-8 py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition bg-transparent"
+            >
+              Watch Demo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .hero-container {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          background-image: url('/public/images/bgimage.png');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .hero-container::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+          z-index: 1;
+        }
+
+        .content-container {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+        }
+      `}</style>
+    </div>
   );
-} 
+}

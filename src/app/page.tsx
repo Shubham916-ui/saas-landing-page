@@ -1,8 +1,8 @@
 import HeroSection from '@/organisms/HeroSection';
 import FeaturesSection from '@/organisms/FeaturesSection';
 import TestimonialsSection from '@/organisms/TestimonialsSection';
-import PricingSection from '@/organisms/PricingSection';
 import CTASection from '@/organisms/CTASection';
+import PricingSection from '@/organisms/PricingSection';
 
 export default function Home() {
   return (
