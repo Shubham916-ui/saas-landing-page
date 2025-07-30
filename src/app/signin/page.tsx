@@ -90,7 +90,7 @@ export default function SignInPage() {
         </div>
         
         <div className="mt-8 text-gray-400">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <Link href="/signup" className="text-blue-400 hover:text-blue-300 transition">
             Sign up
           </Link>

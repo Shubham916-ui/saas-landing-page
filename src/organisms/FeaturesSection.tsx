@@ -52,7 +52,7 @@ export default function FeaturesSection() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        {features.map((feature, i) => (
+        {features.map((feature) => (
           <motion.div
             key={feature.title}
             className="bg-white dark:bg-gray-800 rounded-xl shadow p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-primary/30 hover:bg-primary/10 dark:hover:bg-primary/20 hover:ring-2 hover:ring-primary/40"

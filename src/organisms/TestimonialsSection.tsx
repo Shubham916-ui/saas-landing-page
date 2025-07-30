@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -78,7 +79,7 @@ export default function TestimonialsSection() {
             className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border-2 border-transparent hover:border-primary/40 transition-all p-8 flex flex-col items-center relative min-h-[340px]"
           >
             <span className="absolute left-6 top-6 text-6xl text-primary/20 select-none">“</span>
-            <img src={testimonials[idx].avatar} alt={testimonials[idx].name} className="w-20 h-20 rounded-full border-4 border-primary shadow mb-4 object-cover" />
+            <Image src={testimonials[idx].avatar} alt={testimonials[idx].name} width={80} height={80} className="w-20 h-20 rounded-full border-4 border-primary shadow mb-4 object-cover" />
             {stars(testimonials[idx].rating)}
             <blockquote className="text-lg italic mb-4 text-gray-700 dark:text-gray-200 z-10">{testimonials[idx].quote}</blockquote>
             <div className="flex items-center gap-3 mt-auto">

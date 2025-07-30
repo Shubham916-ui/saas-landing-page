@@ -64,7 +64,7 @@ export default function PricingSection() {
   const getPrice = (tier: PricingTier) => period === 'monthly' ? tier.monthly : tier.annual;
   const getSavePercent = (tier: PricingTier) => 100 - Math.round((tier.annual / tier.monthly) * 100);
 
-  const handleToggle = () => setPeriod(p => (p === 'monthly' ? 'annual' : 'monthly'));
+
   const handleCTA = (idx: number) => {
     setLoading(idx);
     setTimeout(() => setLoading(null), 1200);
@@ -206,7 +206,7 @@ export default function PricingSection() {
                 >
                   {features.filter(f => f.section === section).map((feature, fIdx) => (
                     <li key={feature.name} className="flex items-center gap-2 py-1">
-                      {pricingTiers.map((tier, tIdx) => (
+                      {pricingTiers.map((tier) => (
                         <span key={tier.name + feature.name} className="mr-2">
                           {typeof tier.features[fIdx] === 'boolean' ? (
                             tier.features[fIdx] ? (
