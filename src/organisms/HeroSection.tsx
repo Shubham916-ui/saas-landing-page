@@ -37,7 +37,7 @@ export default function HeroSection() {
           position: relative;
           width: 100%;
           min-height: 100vh;
-          background-image: url('/public/images/bgimage.png');
+          background-image: url('/images/bgimage.png');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
