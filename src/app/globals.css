@@ -58,3 +58,20 @@ body::before {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
+
+/* Tilted Card Styles */
+.tilted-card-figure {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.tilted-card-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
