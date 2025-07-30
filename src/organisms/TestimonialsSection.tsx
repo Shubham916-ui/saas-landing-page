@@ -7,28 +7,32 @@ const testimonials = [
   {
     name: 'Alice Johnson',
     company: 'Acme',
-    avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+    avatar: '/images/avatar-placeholder.svg',
+    fallbackAvatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face',
     quote: 'This platform transformed our workflow and made collaboration effortless!',
     rating: 5,
   },
   {
     name: 'Bob Smith',
     company: 'Globex',
-    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+    avatar: '/images/avatar-placeholder.svg',
+    fallbackAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     quote: 'The analytics and reliability are unmatched. Highly recommended!',
     rating: 5,
   },
   {
     name: 'Priya Patel',
     company: 'Initech',
-    avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+    avatar: '/images/avatar-placeholder.svg',
+    fallbackAvatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face',
     quote: 'Our team productivity soared after switching to this SaaS solution.',
     rating: 4,
   },
   {
     name: 'David Lee',
     company: 'Umbrella',
-    avatar: 'https://randomuser.me/api/portraits/men/76.jpg',
+    avatar: '/images/avatar-placeholder.svg',
+    fallbackAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
     quote: 'Secure, fast, and beautiful. Everything we needed in one place.',
     rating: 5,
   },
@@ -44,8 +48,16 @@ const stars = (count: number) => (
 
 export default function TestimonialsSection() {
   const [idx, setIdx] = useState(0);
+  const [imageError, setImageError] = useState<Record<number, boolean>>({});
   const next = () => setIdx((i) => (i + 1) % testimonials.length);
   const prev = () => setIdx((i) => (i - 1 + testimonials.length) % testimonials.length);
+
+  const handleImageError = (testimonialIndex: number) => {
+    setImageError(prev => ({ ...prev, [testimonialIndex]: true }));
+  };
+
+  const currentTestimonial = testimonials[idx];
+  const avatarSrc = imageError[idx] ? currentTestimonial.fallbackAvatar : currentTestimonial.avatar;
 
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-primary/10 to-secondary/10">
@@ -78,15 +90,25 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.5 }}
             className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border-2 border-transparent hover:border-primary/40 transition-all p-8 flex flex-col items-center relative min-h-[340px]"
           >
-            <span className="absolute left-6 top-6 text-6xl text-primary/20 select-none">“</span>
-            <Image src={testimonials[idx].avatar} alt={testimonials[idx].name} width={80} height={80} className="w-20 h-20 rounded-full border-4 border-primary shadow mb-4 object-cover" />
-            {stars(testimonials[idx].rating)}
-            <blockquote className="text-lg italic mb-4 text-gray-700 dark:text-gray-200 z-10">{testimonials[idx].quote}</blockquote>
+            <span className="absolute left-6 top-6 text-6xl text-primary/20 select-none">&ldquo;</span>
+            <div className="relative w-20 h-20 mb-4">
+              <Image 
+                src={avatarSrc} 
+                alt={currentTestimonial.name} 
+                width={80} 
+                height={80} 
+                className="w-20 h-20 rounded-full border-4 border-primary shadow object-cover"
+                onError={() => handleImageError(idx)}
+                unoptimized={avatarSrc.startsWith('https://images.unsplash.com')}
+              />
+            </div>
+            {stars(currentTestimonial.rating)}
+            <blockquote className="text-lg italic mb-4 text-gray-700 dark:text-gray-200 z-10">{currentTestimonial.quote}</blockquote>
             <div className="flex items-center gap-3 mt-auto">
-              <span className="font-semibold text-primary">{testimonials[idx].name}</span>
+              <span className="font-semibold text-primary">{currentTestimonial.name}</span>
               <span className="text-gray-400">/</span>
               <span className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
-                {testimonials[idx].company}
+                {currentTestimonial.company}
               </span>
             </div>
           </motion.div>
