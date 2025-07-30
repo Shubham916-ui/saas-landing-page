@@ -41,12 +41,12 @@ const cardVariants = {
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-20 px-4 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+    <section id="features" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
         Powerful Features for Modern Teams
       </h2>
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
@@ -55,7 +55,7 @@ export default function FeaturesSection() {
         {features.map((feature) => (
           <motion.div
             key={feature.title}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-primary/30 hover:bg-primary/10 dark:hover:bg-primary/20 hover:ring-2 hover:ring-primary/40"
+            className="bg-white dark:bg-gray-800 rounded-xl shadow p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-primary/30 hover:bg-primary/10 dark:hover:bg-primary/20 hover:ring-2 hover:ring-primary/40"
             variants={cardVariants}
             whileHover={{ scale: 1.07, boxShadow: '0 0 24px 0 rgba(37,99,235,0.25)' }}
           >

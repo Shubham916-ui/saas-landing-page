@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --border-radius: 0.5rem;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
@@ -20,25 +24,12 @@
 }
 
 body {
-  background-image: url('/images/bgimage.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   position: relative;
+  min-height: 100vh;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.5); /* dark overlay for readability */
-  pointer-events: none;
-  z-index: 0;
-}
+/* Remove global background image to improve performance */
+/* Background will be handled by individual components */
 
 /* Animated Gradient Background */
 @keyframes gradient {
